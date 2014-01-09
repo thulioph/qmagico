@@ -1,0 +1,797 @@
+
+/***********************************************************************************************************/
+/*
+**
+**
+**  @Project Name: QMágico - Plano de Cursos;
+**  @url: http://www.qmagico.com.br/;
+**
+**
+**  @Project Organizers Team:
+**      @Member Thulio Philipe (Front End Developer);
+**
+**
+*/
+/************************************************************************************************************/
+
+
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+
+	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,caption,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{
+	border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}
+	article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+	body{line-height:1}
+	ul{list-style:none}
+	blockquote,q{quotes:none}
+	blockquote:before,blockquote:after,q:before,q:after{content:none}
+	table{border-collapse:collapse;border-spacing:0}
+
+
+/* ==========================================================================
+   CLASSES BÁSICAS
+   ========================================================================== */
+.icon{
+	background: url(../img/icons.png) no-repeat;
+}
+
+a{
+	text-decoration: none;
+}
+
+@font-face {
+    font-family: 'proxima-regular';
+    src: url('fonts/proximanova-regular-webfont.eot');
+    src: url('fonts/proximanova-regular-webfont.eot') format('embedded-opentype'),
+         url('fonts/proximanova-regular-webfont.woff') format('woff'),
+         url('fonts/proximanova-regular-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-regular-webfont.svg#proxima') format('svg');
+}
+
+@font-face {
+    font-family: 'proxima-bold';
+    src: url('fonts/proximanova-semibold.eot');
+    src: url('fonts/proximanova-semibold.eot') format('embedded-opentype'),
+         url('fonts/proximanova-semibold.woff') format('woff'),
+         url('fonts/proximanova-semibold.ttf') format('truetype'),
+         url('fonts/proximanova-semibold.svg#proxima-bold') format('svg');
+}
+
+input:focus,
+textarea:focus{
+  box-shadow: 1px 1px 3px rgba(161,194,199, 0.6);
+}
+
+select:focus{
+  border: none;
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+   color: #9b9b9b;
+}
+
+:-moz-placeholder {
+   color: #9b9b9b;
+}
+
+::-moz-placeholder {
+   color: #9b9b9b;
+}
+
+:-ms-input-placeholder {
+   color: #9b9b9b;
+}
+
+/* ==========================================================================
+   ESTRUTURA
+   ========================================================================== */
+
+body{
+	font-size: 10px;
+	font-family: proxima-regular;
+}
+
+section.conteudo{
+	position: absolute;
+	right: 0;
+	padding-bottom: 200px;
+	width: 94.5%;
+	height: auto;
+	background: #edecf1;
+}
+
+header.cabecalho-conteudo{
+	width: 100%;
+	height: 50px;
+	background-color: #bcdde2;
+	border-bottom: 2px solid #a6cbd1;
+	border-left: 2px solid #a6cbd1;
+}
+
+section.main{
+	margin: 15px 15px 0px 15px;
+	width: 97%;
+	height: auto;
+	border: 1px solid #d7d7d7;
+	border-radius: 5px;
+	background-color: #e6e6e6;
+}
+
+.info-curso-professor{
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid #e2e1e6;
+	border-radius: 5px 5px 0px 0px;
+	background-color: #f1f1f3;
+}
+
+.mais-info-curso{
+	width: 100%;
+	height: 40px;
+	border-top: 1px solid #dadada;
+	border-bottom: 1px solid #dadada;
+	background-color: #fff;
+	box-shadow: 0px 1px 3px rgba(221,220,226,0.5);
+}
+
+article.unidades{
+	margin: 15px;
+	min-height: 580px;
+	width: 97.5%;
+	border-radius: 5px;
+}
+
+aside.unidade{
+	float: left;
+	width: 34%;
+	height: 575px;
+	border-radius: 5px 0px 0px 5px;
+	background-color: #62a9af;
+}
+
+aside.lista-exercicios{
+	float: left;
+	width: 65%;
+	height: 575px;
+	border-radius: 0px 5px 5px 0px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+}
+
+li.exercicios{
+	width: 100%;
+	height: 40px;
+	border-bottom: 1px solid #e8e8e8;
+	background-color: #fff;
+}
+
+li.exercicios a{
+	color: #64a5ab;
+	font-size: 1.4em;
+	display: block;
+	padding: 13px 10px 13px 55px;
+}
+
+li.exercicios a:hover{
+	background-color: #62a9af;
+	color: #ffffff;
+}
+
+li.titulo-sessao-exercicios{
+	background-color: #daecee;
+}
+
+li.titulo-sessao-exercicios p{
+	color: #000;
+	font-size: 1.4em;
+	padding: 15px;
+	margin-left: 60px;
+}
+
+li.topico-sessao-exercicios p{
+	font-size: 1.2em;
+	color: #000;
+	padding: 15px;
+	margin-left: 110px;
+}
+
+li.topico-sessao-exercicios:before{
+	content: "";
+	width: 110px;
+	height: 15px;
+	position: absolute;
+	margin: 15px 0px 10px 10px;
+	color: #7ca3a2;
+	font-size: 1.2em;
+	font-family: proxima-regular;
+}
+
+li.titulo-sessao-exercicios:before{
+	content: "";
+	width: 70px;
+	height: 15px;
+	position: absolute;
+	margin: 15px 0px 10px 10px;
+	color: #7ca3a2;
+	font-size: 1.2em;
+	font-family: proxima-regular;
+}
+
+li.titulo-sessao-exercicios:after{
+	content: "";
+	width: 100px;
+	height: 15px;
+	position: absolute;
+	color: #000;
+	font-size: 1.2em;
+	font-family: proxima-regular;
+}
+
+li.topico-sessao-exercicios{
+	background-color: #f2f8f8;
+}
+
+/* ==========================================================================
+   MENU-PRINCIPAL
+   ========================================================================== */
+
+	nav.menu-principal{
+		position: absolute;
+		left: 0;
+		z-index: 1;
+		width: 70px;
+		height: 100%;
+		background-color: #ffffff;
+		box-shadow: 1px 1px 4px rgba(199,198,204,0.8);
+	}
+
+	.menu-principal ul li{
+		background: #ffffff;
+	}
+
+	.menu-principal ul li:first-child{
+		background-color: #f7f7f9;
+		border-bottom: 2px solid #ecebf0;
+	}
+
+	.menu-principal ul li a{
+		display: block;
+		text-align: center;
+		text-indent: -999px;
+		width: 60px;
+		height: 49px;
+	}
+
+	/*.menu-principal ul li a:hover,*/
+	.select{
+		border-left: 3px solid #d43f2b;
+	}
+
+	a.icon-menu{
+		background-position: 18px 14px;
+		background-size: 200%;
+	}
+
+	a.icon-livros{
+		background-position: 22px -21px;
+	}
+
+	a.icon-amigos{
+		background-position: 20px -58px;
+	}
+
+	a.icon-professor{
+		background-position: 17px -94px;
+	}
+
+	a.icon-estatistica{
+		background-position: 20px -132px;
+	}
+
+	a.icon-conta{
+		background-position: 20px -168px;
+	}
+
+	a.icon-configuracoes{
+		background-position: 21px -206px;
+	}
+
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+	h1.logo {
+		float: left;
+		width: 250px;
+		height: 50px;
+	}
+
+	h1.logo a{
+		display: block;
+		padding: 15px;
+		color: #000;
+		text-decoration: none;
+		font-size: 1.5em;
+		font-family: proxima-regular;
+	}
+
+	h1.logo a:before{
+		display: inline-block;
+		margin-right: 10px;
+		width: 26px;
+		height: 26px;
+		background:url(../img/icons.png) -42px 1px;
+		content: "";
+		vertical-align: middle;
+	}
+
+	.pesquisa-notificacao{
+		float: left;
+		margin-left: 200px;
+		width: 480px;
+		height: 50px;
+	}
+
+	input.input-search{
+		float: left;
+		margin: 10px;
+		padding: 0px 30px 0px 10px;
+		width: 370px;
+		height: 30px;
+		outline: none;
+		border: 1px solid #a1c2c7;
+		border-radius: 5px;
+		background-color: #fff;
+		/*background: #fff url(../img/icons.png) no-repeat 316px -30px;*/
+	}
+
+	.notificacao{
+		float: left;
+		margin: 10px 0px 10px 5px;
+		width: 25px;
+		height: 29px;
+		background-position: -42px -67px;
+	}
+
+	.painel-aluno{
+		float: right;
+		width: 260px;
+		height: 50px;
+		border-left: 2px solid #afd8de;
+		background-color: #d8edf0;
+	}
+
+	.painel-aluno a{
+		display: block;
+		margin: 10px 20px;
+		color: #5598a0;
+		text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+		font-size: 1.8em;
+	}
+
+	.painel-aluno a:before{
+		display: inline-block;
+		margin-right: 10px;
+		width: 35px;
+		height: 32px;
+		background: url(../img/icons.png) no-repeat -76px 0px;
+		content: "";
+		vertical-align: middle;
+	}
+
+	.painel-aluno a:after{
+		display: inline-block;
+		margin-right: 10px;
+		width: 35px;
+		height: 32px;
+		background: url(../img/icons.png) no-repeat -76px -142px;
+		content: "";
+		vertical-align: middle;
+	}
+
+
+/* ==========================================================================
+   INFO-CURSO-PROFESSOR
+   ========================================================================== */
+
+	h3.titulo-materia{
+		color: #000000;
+		font-family: proxima-regular;
+		font-size: 1.5em;
+		padding: 15px 0px 15px 15px;
+		float: left;
+	}
+
+	h3.nome-professor{
+		color: #6f6f6f;
+		font-size: 1.3em;
+		padding: 10px;
+	}
+
+	h3.nome-professor:before{
+		content: "";
+		width: 26px;
+		height: 26px;
+		background: url(../img/icons.png) no-repeat -81px -45px;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+
+	a.voltar-cursos{
+		background-color: #eaeaec;
+		float: right;
+		padding: 5px;
+		font-size: 1.2em;
+		font-family: proxima-regular;
+		border: 1px solid #cdcdcd;
+		margin: 10px 25px 10px 10px;
+		color: #000;
+		text-decoration: none;
+		display: block;
+	}
+
+
+/* ==========================================================================
+   ARTICLE.UNIDADES
+   ========================================================================== */
+
+	li.secao-1x1:before{
+		content: "SEÇÃO 1.1";
+	}
+
+	li.secao-2x1:before{
+		content: "SEÇÃO 2.1";
+	}
+
+	li.secao-1x1:after{
+		content: "56% concluído";
+		margin: -32px 0px 10px 10px;
+		right: 4%;
+	}
+
+	li.secao-1x2:before{
+		content: "SEÇÃO 1.2";
+	}
+
+	li.secao-2x2:before{
+		content: "SEÇÃO 2.2";
+	}
+
+	li.secao-1x2:after{
+		content: "3% concluído";
+		margin: -32px 0px 10px 10px;
+		right: 4%;
+	}
+
+	li.secao-1x2x1:before{
+		content: ".......... TÓPICO 1.2.1:";
+	}
+
+	li.secao-2x2x1:before{
+		content: ".......... TÓPICO 2.2.1:";
+	}
+
+	li.secao-1x2x2:before{
+		content: ".......... TÓPICO 1.2.2:";
+	}
+
+	li.secao-2x2x2:before{
+		content: ".......... TÓPICO 2.2.2:";
+	}
+
+	a.icones-exercicios:before{
+		content: "";
+		width: 27px;
+		height: 20px;
+		background-color: black;
+		margin: -2px 10px 10px -40px;
+		position: absolute;
+	}
+
+	a.camera:before{
+		content: "";
+		background: url(../img/icons.png) no-repeat;
+		background-position: -41px -219px;
+	}
+
+	a.camera:after{
+		content: "";
+		width: 35px;
+		height: 12px;
+		position: absolute;
+		margin-left: 10px;
+		border: 1px solid #999999;
+		border-radius: 10px;
+		color: #999999;
+		font-size: 0.8em;
+		text-align: center;
+		padding-top: 2px;
+		font-family: proxima-bold;
+	}
+
+	a.camera-time-3x41:after{
+		content: "3:41";
+	}
+
+	a.camera-time-7x15:after{
+		content: "7:15";
+	}
+
+	a.camera-time-5x12:after{
+		content: "5:12";
+	}
+
+	a.camera-time-9x31:after{
+		content: "9:31";
+	}
+
+	a.camera-time:hover:after{
+		color: #ffffff;
+	}
+
+	a.lapis:before{
+		content: "";
+		background: url(../img/icons.png) no-repeat;
+		background-position: -41px -184px;
+	}
+
+	a.livro:before{
+		content: "";
+		background: url(../img/icons.png) no-repeat;
+		background-position: -41px -148px;
+	}
+
+	li.topico-exercicio:after{
+		content: "";
+		width: 80px;
+		height: 10px;
+		border-radius: 2px;
+		background-color: #8dd227;
+		position: absolute;
+		margin: -25px 0px 0px 10px;
+		right: 13%;
+	}
+
+	li.exercicio-concluido:after{
+		content: "Estudado";
+		width: 70px;
+		height: 13px;
+		border-radius: 2px;
+		background: url(../img/icons.png) no-repeat;
+		background-position: -85px -82px;
+		position: absolute;
+		margin: -25px 10px 0px 10px;
+		right: 13%;
+		color: #000;
+		font-size: 1.2em;
+		text-align: right;
+	}
+
+	li.porcentagem-concluido:before{
+		content: "";
+		width: 50px;
+		height: 13px;
+		background: url(../img/icons.png) no-repeat;
+		background-position: -85px -114px;
+		position: absolute;
+		margin: 10px 10px 10px 10px;
+		right: 4%;
+		color: #000;
+		padding-top: 3px;
+		font-size: 1.3em;
+		text-align: right;
+	}
+
+	li.porcentagem-concluido:hover:before{
+		color: #fff;
+	}
+
+	li.porcentagem-concluido-350x350:before{
+		content: "350/350";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-140x300:before{
+		content: "140/300";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-0x800:before{
+		content: "0/800";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-700x700:before{
+		content: "700/700";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-100x800:before{
+		content: "100/800";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-0x350:before{
+		content: "0/350";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-100x400:before{
+		content: "100/400";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-200x200:before{
+		content: "200/200";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-0x700:before{
+		content: "0/700";
+		padding-left: 30px;
+	}
+
+	li.porcentagem-concluido-0x200:before{
+		content: "0/200";
+		padding-left: 30px;
+	}
+
+
+/* ==========================================================================
+   UNIDADES
+   ========================================================================== */
+
+	h3.titulo-unidade{
+		color: #ffffff;
+		text-transform: uppercase;
+		font-size: 1.2em;
+		margin: 20px;
+		letter-spacing: 0.05em;
+	}
+
+	h3.titulo-unidade:after{
+		content: "1390/10300";
+		width: 80px;
+		height: 10px;
+		background: url(../img/icons.png) no-repeat;
+		background-position: -85px -114px;
+		position: absolute;
+		right: 67%;
+		color: #fff;
+		padding: 2px 0px 2px 25px;
+	}
+
+	h4.subtitulo-unidade{
+		color: #ffffff;
+		font-size: 1.8em;
+		margin: 20px;
+	}
+
+	p.descricao-unidade{
+		color: #ffffff;
+		font-size: 1.2em;
+		line-height: 1.5em;
+		margin: 20px;
+		letter-spacing: 0.05em;
+	}
+
+
+/* ==========================================================================
+   MAIS-INFO-CURSOS
+   ========================================================================== */
+
+ul.opcoes-curso{
+	width: 490px;
+	float: left;
+	margin-left: -440px;
+}
+
+ul.opcoes-curso li{
+	display: inline-block;
+	border-right: 1px solid #e8e8e8;
+}
+
+ul.opcoes-curso li a{
+	display: block;
+	text-align: left;
+	color: #6aa9b0;
+	font-size: 1.3em;
+	padding: 14px 0px;
+	margin: 0px 10px;
+}
+
+a.selecionado{
+	color: #000000 !important;
+}
+
+a.selecionado:after{
+	content: "";
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #e6e6e6;
+	position: absolute;
+	margin: 19px 0px 10px -53px;
+}
+
+ul.curso-estatisticas{
+	width: 280px;
+	float: right;
+	margin-right: -165px;
+	/*background-color: red;*/
+}
+
+ul.curso-estatisticas li{
+	display: inline-block;
+	border-right: 1px solid #e8e8e8;
+}
+
+ul.curso-estatisticas li:last-child{
+	border: none;
+}
+
+ul.curso-estatisticas li a{
+	display: block;
+	text-align: left;
+	font-size: 1.3em;
+	padding: 7px 0px 5px 0px;
+	margin: 0px 10px;
+}
+
+a.curso-concluido{
+	color: #9bd741;
+}
+
+a.estatistica{
+	color: #76afb6;
+}
+
+a.estatistica:before{
+	content: "";
+	width: 25px;
+	height: 25px;
+	background: url(../img/icons.png) no-repeat;
+	background-position: -41px -109px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+
+
+
+/* ==========================================================================
+   MEDIA-QUERIES
+   ========================================================================== */
+
+	@media screen (min-width: 1024px) {
+		section.conteudo{width: 93%;}
+		.pesquisa-notificacao{margin-left: 5%;width: 370px;}
+		.pesquisa-notificacao{margin-left: 60px;}
+		input.input-search{width: 250px;background-color: #fff;/*background: #fff url(../img/icons.png) no-repeat 316px -30px*/;}
+		.painel-aluno{width: 210px;}
+		.painel-aluno a{margin: 10px;}
+		.painel-aluno a:after{
+			display: inline-block;
+			margin-left: 10px;
+			width: 15px;
+			height: 15px;
+			background: url(../img/icons.png) no-repeat -90px -150px;
+			content: "";
+			vertical-align: middle;
+		}
+		li.topico-exercicio:after{right: 15%;}
+		ul.curso-estatisticas{width: 290px;margin-left: 75px;}
+		ul.opcoes-curso{margin-left: -50%;}
+	}
+
+
+
+
+
+
+
